@@ -33,9 +33,10 @@ I used `react-hook-form` and `react-bootstrap` as external libraries for validat
 File structure - Standard CRA - components, containers(views), and redux store parallel.
 
 ```
-├── package.json
-├── public
-└── src
+ dashboard
+ ├── package.json
+ ├── public
+ └── src
     ├── App.css
     ├── App.js
     ├── components
