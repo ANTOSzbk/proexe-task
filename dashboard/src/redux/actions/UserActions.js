@@ -96,7 +96,6 @@ export const editUser = (id, name, email) => (dispatch) => {
   axios
     .patch(`https://jsonplaceholder.typicode.com/users/${id}`, { name, email })
     .then((res) => {
-      console.log(res)
       dispatch({
         type: EDIT_USER,
         payload: res.data,
