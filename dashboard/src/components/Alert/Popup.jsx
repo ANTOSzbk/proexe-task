@@ -7,7 +7,6 @@ export default function Popup(props) {
   delete modalProps.onDeleteClick;
   delete modalProps.loading;
   useEffect(() => {
-    console.log(props);
     if (!props.loading && isOpen) props.onHide();
   }, [props, isOpen]);
   const onClick = () => {

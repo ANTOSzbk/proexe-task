@@ -29,7 +29,6 @@ class Users extends Component {
     this.toggleModal = this.toggleModal.bind(this);
   }
   componentDidUpdate() {
-    console.log('Update userlisty');
     this.props.isEmpty();
     this.props.setUsers(this.props.users);
     const prevUsers = [...this.props.users];
