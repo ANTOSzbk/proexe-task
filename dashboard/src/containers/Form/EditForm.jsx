@@ -40,8 +40,11 @@ function EditForm(props) {
   }, [editedUser]);
 
   useEffect(() => {
+    const user = { ...props.addedUser };
+    user.id = props.id_counter + 1;
     if (props.addResponse === 201) {
-      props.pushUser(props.addedUser);
+      props.pushUser(user);
+      props.resetResponse();
     }
     props.resetResponse();
     setLoading(false);
@@ -142,6 +145,7 @@ const mapStateToProps = (state) => {
     editResponse: state.editUser.response,
     addResponse: state.addUser.response,
     success: state.getUsers.success,
+    id_counter: state.getUsers.id_counter,
   };
 };
 const mapDispatchToProps = (dispatch) => {

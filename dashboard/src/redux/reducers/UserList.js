@@ -3,7 +3,7 @@ import { GET_USERS, SET_USERS, PUSH_USER, IS_EMPTY, SORT_BY_USERNAME } from "../
 const initialState = {
     items: [],
     success: false,
-    sortedByUsername: undefined
+    sortedByUsername: undefined,
 }
 
 const userListReducer = (state = initialState, action) => {
@@ -11,7 +11,8 @@ const userListReducer = (state = initialState, action) => {
         case GET_USERS:
             return {
                 ...state,
-                items: action.payload
+                items: action.payload,
+                id_counter: action.payload.length
             }
         case SET_USERS:
             return {
@@ -23,7 +24,8 @@ const userListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 items: [...state.items, action.payload],
-                success: action.success
+                success: action.success,
+                id_counter: state.id_counter += 1
             }
         case SORT_BY_USERNAME:
             return {
