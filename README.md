@@ -1,6 +1,7 @@
 # Proexe Recruitment Task
 
 ### Installation
+Steps to reproduce development environment.
 
 Using Docker container explicit environment, `docker-compose`:
 
