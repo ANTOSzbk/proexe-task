@@ -7,6 +7,7 @@ Using Docker container explicit environment, `docker-compose`:
 
 ```
 git clone git@github.com:ANTOSzbk/proexe-task.git
+cd proexe-task
 docker-compose run project npm install
 docker-compose up
 ```
