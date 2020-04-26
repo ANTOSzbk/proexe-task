@@ -2,7 +2,7 @@ import { ADD_USER, RESET_RESPONSE } from "../actions/UserActions"
 
 
 
-const userListReducer = (state = {}, action) => {
+const addUserReducer = (state = {}, action) => {
     switch (action.type) {
         case ADD_USER:
             return {
@@ -20,4 +20,4 @@ const userListReducer = (state = {}, action) => {
     }
 }
 
-export default userListReducer;
+export default addUserReducer;

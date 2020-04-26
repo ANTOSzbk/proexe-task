@@ -20,7 +20,7 @@ export default function Popup(props) {
           <Modal.Title>Delete user</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center">
-          <span className="p-3 bg-danger rounded-pill text-warning">
+          <span className="p-3 rounded-pill text-danger">
             <span role="img" aria-label="x-sign">
               ❌
             </span>{' '}
@@ -40,9 +40,10 @@ export default function Popup(props) {
                   animation="border"
                   size="sm"
                   role="status"
+                  className="mr-1"
                   aria-hidden="true"
                 />
-                <span className="text-black-50">Deleting...</span>
+                Deleting...
               </>
             ) : (
               'Delete'

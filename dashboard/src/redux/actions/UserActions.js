@@ -55,15 +55,17 @@ export const getUsers = () => dispatch => {
     dispatch({
       type: GET_USERS,
       payload: res.data,
+      response: res.status
     });
   });
 };
 
 export const getUser = (id) => dispatch => {
-  axios.get(`https://jsonplaceholder.typicode.com/users/${id}`).then((res) => {
+  axios.get(`https://jsonplaceholder.typicode.com/users/${id}`, { validateStatus: false }).then((res) => {
     dispatch({
       type: GET_USER,
-      payload: res.data
+      payload: res.data,
+      response: res.status
     })
   })
 }

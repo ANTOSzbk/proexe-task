@@ -11,13 +11,13 @@ function Dashboard(props) {
   };
   return (
     <div>
+      <header>
+        <h1>Dashboard</h1>
+      </header>
       <Nav pills="true">
-        <NavItem className="mb-5">
-          <h1>Dashboard</h1>
-        </NavItem>
         <NavItem className="ml-auto mr-1 mb-2 align-self-end">
           <Button variant="outline-secondary" onClick={handleClick}>
-            <span role="img" aria-label="shuffletracks">
+            <span role="img" aria-label="shuffletrackssign">
               🔀
             </span>{' '}
             Sort by Username

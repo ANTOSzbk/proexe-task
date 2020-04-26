@@ -18,26 +18,24 @@ class Users extends Component {
     super(props);
     this.state = {
       sorted: this.props.sortedByUsername,
-      tableEmpty: false,
       showModal: false,
       loading: false,
-      userId: 0, // for child component - <Popout/> - to show info[id] of selected User
-      userID: 0, // for async [JSON API] and static [browser memory] table update
+      userId: null, // props for child component and refreshing table on successful delete
     };
-    this.props.isEmpty();
     if (!this.props.users.length) this.props.getUsers();
     this.toggleModal = this.toggleModal.bind(this);
+    this.deleteClick = this.deleteClick.bind(this);
   }
   componentDidUpdate() {
     this.props.isEmpty();
-    this.props.setUsers(this.props.users);
     const prevUsers = [...this.props.users];
     const newUsers = prevUsers.filter((e) => {
-      return e.id !== this.state.userID;
+      return e.id !== this.state.userId;
     });
     if (this.props.deleteResponse === 200) {
       this.setState({
         loading: false,
+        userId: null,
       });
       this.props.resetResponse();
       this.props.setUsers(newUsers);
@@ -53,65 +51,62 @@ class Users extends Component {
     this.props.deleteUser(id);
     this.setState({
       loading: true,
-      userID: id,
     });
   }
 
   render() {
     if (this.props._isEmpty) {
       return (
+        <tr>
+          <td colSpan="7" className="p-5 text-danger">
+            <h2>Table is empty. Please add new users.</h2>
+          </td>
+        </tr>
+      );
+    } else
+      return (
         <>
-          <tr>
-            <td className="p-5 border-right text-danger">
-              Table is empty. Please add new users.
-            </td>
-          </tr>
+          {this.props.users.map((user) => {
+            return (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.username}</td>
+                <td>{user.address.city}</td>
+                <td>{user.email}</td>
+                <td className="text-center">
+                  <Link to={{ pathname: `/edit/${user.id}` }}>
+                    <Button variant="info">Edit</Button>
+                  </Link>
+                </td>
+                <td className="text-center">
+                  <Button
+                    onClick={(e) => this.toggleModal(e, user.id)}
+                    variant="danger"
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
+          {this.state.showModal ? (
+            <Popup
+              show={this.state.showModal}
+              loading={this.state.loading}
+              onHide={() => this.setState({ showModal: false })}
+              onDeleteClick={() => this.deleteClick(this.state.userId)}
+              userid={this.state.userId}
+            />
+          ) : null}
         </>
       );
-    }
-    return (
-      <>
-        {this.props.users.map((user) => {
-          return (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.name}</td>
-              <td>{user.username}</td>
-              <td>{user.address.city}</td>
-              <td>{user.email}</td>
-              <td className="text-center">
-                <Link to={{ pathname: `/edit/${user.id}` }}>
-                  <Button variant="info">Edit</Button>
-                </Link>
-              </td>
-              <td className="text-center">
-                <Button
-                  onClick={(e) => this.toggleModal(e, user.id)}
-                  variant="danger"
-                >
-                  Delete
-                </Button>
-              </td>
-            </tr>
-          );
-        })}
-        {this.state.showModal ? (
-          <Popup
-            show={this.state.showModal}
-            loading={this.state.loading}
-            onHide={() => this.setState({ showModal: false })}
-            onDeleteClick={() => this.deleteClick(this.state.userId)}
-            userid={this.state.userId}
-          />
-        ) : null}
-      </>
-    );
   }
 }
 
 Users.propTypes = {
   getUsers: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired,
+  users: PropTypes.any.isRequired,
   deletedUser: PropTypes.object,
   deleteResponse: PropTypes.number,
   _isEmpty: PropTypes.bool,
