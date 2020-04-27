@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, BrowserRouter, Route } from "react-router-dom"
-import Store from "./redux/Store"
-import { Provider } from "react-redux"
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import Store from './redux/Store';
+import { Provider } from 'react-redux';
 import EditForm from './containers/Forms/EditForm';
-import AddForm from './containers/Forms/AddForm'
+import AddForm from './containers/Forms/AddForm';
 import Dashboard from './containers/Dashboard/Dashboard';
 
 function App() {
@@ -18,8 +18,9 @@ function App() {
           </Switch>
         </BrowserRouter>
       </div>
-    </Provider >
+    </Provider>
   );
 }
+
 
 export default App;
