@@ -22,7 +22,7 @@ npm run start
 ```
 
 After installation and executing run script project is available at http://localhost:3000.
-Project is also available remotely at https://proexe.antoszbk.xyz/ - my personal domain.
+Project is also available remotely at https://proexe.antoszbk.xyz/ - my personal domain or https://5ea67fb54c181e2fd12d534b--hopeful-mirzakhani-3f81d9.netlify.app/ - Netlify continuous deployment tool.
 
 ## Information
 
