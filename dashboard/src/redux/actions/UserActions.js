@@ -13,6 +13,7 @@ export const PUSH_USER = 'PUSH_USER';
 export const RESET_RESPONSE = 'RESET_RESPONSE'
 export const IS_EMPTY = 'IS_EMPTY'
 export const SORT_BY_USERNAME = 'SORT_BY_USERNAME'
+export const SHOW_ALERT = 'SHOW_ALERT'
 
 
 
@@ -47,6 +48,16 @@ export const sortByUsername = () => dispatch => {
     type: SORT_BY_USERNAME,
   })
 }
+
+export const showAlert = (message, timeout, error) => dispatch => {
+  dispatch({
+    type: SHOW_ALERT,
+    message: message ? message : null, // if parameter received, set custom message
+    timeout: timeout ? timeout : false,  // if parameter received, set custom timeout
+    error: error ? true : false, // if parameter received, change alert type
+  })
+}
+
 
 // -------------------------- API CALLS --------------------------------
 

@@ -7,6 +7,7 @@ import {
   pushUser,
   resetResponse,
   isEmpty,
+  showAlert,
 } from '../../redux/actions/UserActions';
 
 function AddForm(props) {
@@ -21,7 +22,11 @@ function AddForm(props) {
     !props.lastItemId
       ? (user.id = Math.ceil(Math.random() * 100))
       : (user.id = props.lastItemId + 1);
-    if (props.addResponseStatus === 201) props.pushUser(user);
+    if (props.addResponseStatus === 201) {
+      props.pushUser(user);
+      props.showAlert('User added sucessfully.');
+    } else if (props.addResponseStatus)
+      props.showAlert('An error occurred. User was not added.', false, true);
     props.isEmpty();
     if (redirect) history.push('/');
     props.resetResponse();
@@ -56,6 +61,8 @@ const mapDispatchToProps = (dispatch) => {
     pushUser: (user) => dispatch(pushUser(user)),
     resetResponse: () => dispatch(resetResponse()),
     isEmpty: () => dispatch(isEmpty()),
+    showAlert: (message, timeout, error) =>
+      dispatch(showAlert(message, timeout, error)),
   };
 };
 

@@ -25,7 +25,7 @@ function Form(props) {
             })}
             type="name"
             name="name"
-            placeholder="Enter new user name"
+            placeholder={props.name ? props.name : 'Enter new user name'}
             required
           />
           <BForm.Text className="text-danger">
@@ -47,7 +47,7 @@ function Form(props) {
                 message: 'Invalid email address.',
               },
             })}
-            placeholder="Enter new email"
+            placeholder={props.email ? props.email : 'Enter new user email'}
             required
           />
           <BForm.Text className="text-danger">

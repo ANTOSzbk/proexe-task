@@ -1,11 +1,12 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk"
 import addUserReducer from './reducers/AddUser';
 import deleteUserReducer from './reducers/DeleteUser';
 import userListReducer from './reducers/UserList';
 import editUserReducer from './reducers/EditUser';
 import getUserReducer from './reducers/GetUser';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import alertReducer from './reducers/Alert';
 
 const middleware = [thunk]
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   deleteUser: deleteUserReducer,
   editUser: editUserReducer,
   getUsers: userListReducer,
-  getUser: getUserReducer
+  getUser: getUserReducer,
+  alert: alertReducer,
 });
 
 const Store = createStore(

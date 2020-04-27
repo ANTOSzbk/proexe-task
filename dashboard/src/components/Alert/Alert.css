@@ -1,0 +1,28 @@
+@keyframes fadeAlertInOut {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 0.05;
+  }
+  5% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  95% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.alert {
+  position: fixed;
+  top: 87vh;
+  left: 5vw;
+  width: auto;
+  animation: fadeAlertInOut 3.5s ease-in;
+}
