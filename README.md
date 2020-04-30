@@ -56,10 +56,6 @@ File structure - Standard CRA - components, containers(views), and redux store p
 
 ```
 
-## Thoughts
-
-Zadanie było bardzo przyjemne. Mimo kilku trudności napotkanych przez konieczność oddzielenia zapytań API od podręcznej pamięci pracowało się przyjemnie. Czas poświęcony na projekt to między 3 a 4 godziny.
-
 # Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
